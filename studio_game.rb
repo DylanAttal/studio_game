@@ -1,23 +1,12 @@
-name_1 = "larry"
-name_2 = "curly"
-name_3 = "moe"
-name_4 = "shemp"
+def time
+  current_time = Time.new.strftime("%I:%M:%S")
+end
 
-health_1 = 60
-health_2 = 125
-health_3 = 100
-health_4 = 90
+def say_hello(name, health)
+  puts "I'm #{name.capitalize} with a health of #{health} at #{time}"
+end
 
-name_1 = name_1.capitalize
-name_2 = name_2.upcase
-name_3 = name_3.capitalize
-name_4 = name_4.capitalize.ljust(30, ".")
-
-current_time = Time.new
-current_time = current_time.strftime("%A %m/%d/%y at %I:%M%p")
-
-puts "#{name_1} has a health of #{health_1}"
-puts "#{name_2} has a health of #{health_2}"
-puts "#{name_3} has a health of #{health_3}".center(40, "*")
-puts "#{name_4}has a health of #{health_4}"
-puts "The game started on #{current_time}"
+say_hello("larry", 60)
+say_hello("curly", 125)
+say_hello("moe", 100)
+say_hello("shemp", 90)
