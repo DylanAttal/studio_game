@@ -14,7 +14,7 @@ name_3 = name_3.capitalize
 name_4 = name_4.capitalize.ljust(30, ".")
 
 current_time = Time.new
-current_time = current_time.strftime("%A %0m/%0e/%y at %I:%M%p")
+current_time = current_time.strftime("%A %m/%d/%y at %I:%M%p")
 
 puts "#{name_1} has a health of #{health_1}"
 puts "#{name_2} has a health of #{health_2}"
