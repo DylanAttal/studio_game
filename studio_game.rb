@@ -13,10 +13,12 @@ class Player
 
   def w00t
     @health += 15
+    puts "#{@name} got w00ted!"
   end
 
   def blam
     @health -= 10
+    puts "#{@name} got blammed!"
   end
 
   def score
@@ -29,4 +31,15 @@ player2 = Player.new("larry")
 player3 = Player.new("curly")
 
 player2.name = "Lawrence"
-puts player2
+
+players = [player1, player2, player3]
+
+players.pop
+player4 = Player.new("shemp", 90)
+players.push(player4)
+
+puts "There are #{players.size} players in the game:"
+players.each do |player|
+  player.w00t
+  puts player
+end
