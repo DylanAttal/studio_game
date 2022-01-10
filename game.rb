@@ -1,5 +1,6 @@
 require_relative 'die'
 require_relative 'game_turn'
+require_relative 'treasure_trove'
 
 class Game
   def initialize(title)
@@ -18,6 +19,12 @@ class Game
 
     @players.each do |player|
       puts player
+    end
+
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.size} treasures to be found:"
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points}"
     end
 
     1.upto(rounds) do |round|
@@ -44,7 +51,7 @@ class Game
     end
 
     puts "#{wimpy_players.length} wimpy players:"
-    wimpy_players.each do |p|
+    wimpy_players.each do |player|
       print_name_and_health(player)
     end
 
