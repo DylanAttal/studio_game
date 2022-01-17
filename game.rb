@@ -10,6 +10,12 @@ class Game
 
   attr_reader :title
 
+  def load_players(from_file)
+    File.readlines(from_file).each do |line|
+      add_player(Player.from_csv(line))
+    end
+  end
+
   def add_player(player)
     @players.push(player)
   end
@@ -40,6 +46,11 @@ class Game
     puts "#{player.name} (#{player.health})"
   end
 
+  def high_score_entry(player)
+    formatted_name = player.name.ljust(20, '.')
+    "#{formatted_name} #{player.score}"
+  end
+
   def print_stats
     strong_players, wimpy_players = @players.partition { |p| p.strong? }
 
@@ -55,10 +66,8 @@ class Game
       print_name_and_health(player)
     end
 
-    sorted_players = @players.sort
-    sorted_players.each do |player|
-      formatted_name = player.name.ljust(20, '.')
-      puts "#{formatted_name} #{player.score}"
+    @players.sort.each do |player|
+      puts high_score_entry(player)
     end
 
     @players.each do |player|
@@ -67,6 +76,15 @@ class Game
         puts "#{treasure.points} total #{treasure.name} points"
       end
       puts "#{player.points} grand total points"
+    end
+  end
+
+  def save_high_scores(to_file = "high_scores.txt")
+    File.open(to_file, "w") do |file|
+      file.puts "#{@title} High Scores:"
+      @players.sort.each do |player|
+        file.puts high_score_entry(player)
+      end
     end
   end
 end
