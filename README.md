@@ -6,7 +6,7 @@ I made this app following along with [The Pragmatic Studio's Ruby course](https:
 
 I published the gem for this app on [RubyGems.org](https://rubygems.org/).
 
-<img src="assets/images/studio_game_ruby_gem.png" width="500px;">
+<img src="assets/images/studio_game_ruby_gem.png" width="1000px;">
 
 In order to install it, run
 
